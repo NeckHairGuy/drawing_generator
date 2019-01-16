@@ -1,0 +1,30 @@
+// state of the art
+// Nguyen Minh Duc
+// www.nguyenminhduc.de
+// ------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
+
+Checkerboard board;
+
+void setup(){
+  size(641,692, P2D);
+  //fullScreen(P2D,1);
+  //frameRate(10);
+  board = new Checkerboard(10,10, 10);
+  board.fillRandom();
+
+  background(0);
+
+}
+
+
+void draw(){
+  
+  board.evolve();
+  board.display();
+ 
+  delay(100);
+
+
+ // saveFrame("frames/####.tif");
+}
