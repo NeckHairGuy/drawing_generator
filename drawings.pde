@@ -18,11 +18,11 @@ boolean change = false;
 
 void setup() {
 
-  fullScreen(P2D);
+  fullScreen();
   frameRate(60);
   background(random(255),random(255),random(255));
-    
-  
+
+
 
 }
 
@@ -38,10 +38,10 @@ void keyPressed() {
 }
 
 void draw() {
- 
+
    stroke(0,random(255));
-   
-   
+
+
   if(change){
     change = false;
     background(random(255),random(255),random(255));
@@ -56,7 +56,7 @@ void draw() {
   }
 
   if(mousePressed){
-    
+
     float ff = map(noise(yoff),0,1,0,255);
     fill(random(ff*0.1),random(ff*1.2),random(ff*0.2),random(255));
   }
@@ -67,5 +67,5 @@ void draw() {
   sizeoff+=0.1;
 
    //saveFrame("animation/line-######.tif");
-    
+
 }
