@@ -9,6 +9,9 @@ float sizeoff = 0.0;
 
 boolean change = false;
 
+float red = random(0,2);
+float green = random(0,2);
+float blue = random(0,2);
 
 PGraphics hires;
 int scaleFactor = 5;
@@ -17,7 +20,7 @@ int scaleFactor = 5;
 
 void setup() {
 
-  fullScreen();
+  fullScreen(P2D);
   frameRate(60);
 
   hires = createGraphics(
@@ -52,18 +55,11 @@ void draw() {
 
   if (mouseX == 0 && mouseY == 0) {} else {
 
-
-
-
-
-
-    float s = map(noise(sizeoff),0,1,-50,50);
+    float s = map(noise(sizeoff),0,1,-40,40);
     int shake = 30;
-    int size = 55;
-
+    int size = 40;
 
     float ff = map(noise(yoff),0,1,0,255);
-
 
     //print in high res image
     beginRecord(hires);
@@ -71,8 +67,12 @@ void draw() {
       if(change){
        change = false;
        background(random(255),random(255),random(255));
+       red = random(0,2);
+       green = random(0,2);
+       blue = random(0,2);
       }
       stroke(0,random(255));
+      strokeWeight(1*scaleFactor*0.5);
 
       if (frameCount % 200 > int(200/2)){
        fill(0, random(255));
@@ -81,15 +81,16 @@ void draw() {
       }
 
       if(mousePressed){
-       fill(random(ff*0.1),random(ff*1.2),random(ff*0.2),random(255));
+       fill(random(ff*red),random(ff*green),random(ff*blue),random(255));
       }
-      ellipse(mouseX*scaleFactor+random(shake),mouseY*scaleFactor+random(shake),size*scaleFactor+s,size*scaleFactor+s);
+      ellipse(mouseX*scaleFactor+random(shake),mouseY*scaleFactor+random(shake),size*scaleFactor+s*scaleFactor,size*scaleFactor+s*scaleFactor);
       hires.scale(scaleFactor);
 
     endRecord();
     //print end
 
     //print on screen
+    strokeWeight(1);
     ellipse(mouseX+random(shake),mouseY+random(shake),size+s,size+s);
     //print end
 
