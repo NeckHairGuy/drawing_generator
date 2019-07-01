@@ -20,7 +20,7 @@ int scaleFactor = 5;
 
 void setup() {
 
-  fullScreen(P2D);
+  fullScreen();
   frameRate(60);
 
   hires = createGraphics(
