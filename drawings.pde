@@ -70,18 +70,20 @@ void draw() {
        red = random(0,2);
        green = random(0,2);
        blue = random(0,2);
-      }
-      stroke(0,random(255));
+      };
+
+      int opacity = int(random(255));
+      stroke(0,opacity);
       strokeWeight(1*scaleFactor*0.5);
 
       if (frameCount % 500 > int(500/2)){
-       fill(0, random(255));
+       fill(0, (255-opacity));
       }else{
-       fill(255, random(255));
+       fill(255, (255-opacity));
       }
 
       if(mousePressed){
-       fill(random(ff*red)*1,random(ff*green)*1,random(ff*blue)*1,random(255));
+       fill(random(ff*red)*1,random(ff*green)*1,random(ff*blue)*1,(255-opacity));
       }
       ellipse(mouseX*scaleFactor+random(shake)*scaleFactor,mouseY*scaleFactor+random(shake)*scaleFactor,size*scaleFactor+s*scaleFactor,size*scaleFactor+s*scaleFactor);
       // hires.scale(scaleFactor);
