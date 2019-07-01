@@ -45,7 +45,7 @@ void keyPressed() {
     }
     if (keyCode == DOWN) {
       endRecord();
-      hires.save("frames/"+(millis()*random(1))+"-frame-highres.png");
+      hires.save("frames/"+(millis()*random(1))+".png");
       println("Finished");
     }
   }
@@ -55,9 +55,9 @@ void draw() {
 
   if (mouseX == 0 && mouseY == 0) {} else {
 
-    float s = map(noise(sizeoff),0,1,-40,40);
+    float s = map(noise(sizeoff),0,1,-20,20);
     int shake = 30;
-    int size = 40;
+    int size = 25;
 
     float ff = map(noise(yoff),0,1,0,255);
 
@@ -74,17 +74,17 @@ void draw() {
       stroke(0,random(255));
       strokeWeight(1*scaleFactor*0.5);
 
-      if (frameCount % 200 > int(200/2)){
+      if (frameCount % 500 > int(500/2)){
        fill(0, random(255));
       }else{
        fill(255, random(255));
       }
 
       if(mousePressed){
-       fill(random(ff*red),random(ff*green),random(ff*blue),random(255));
+       fill(random(ff*red)*1,random(ff*green)*1,random(ff*blue)*1,random(255));
       }
-      ellipse(mouseX*scaleFactor+random(shake),mouseY*scaleFactor+random(shake),size*scaleFactor+s*scaleFactor,size*scaleFactor+s*scaleFactor);
-      hires.scale(scaleFactor);
+      ellipse(mouseX*scaleFactor+random(shake)*scaleFactor,mouseY*scaleFactor+random(shake)*scaleFactor,size*scaleFactor+s*scaleFactor,size*scaleFactor+s*scaleFactor);
+      // hires.scale(scaleFactor);
 
     endRecord();
     //print end
