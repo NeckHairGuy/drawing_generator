@@ -1,4 +1,0 @@
-reviews:
-  auto: true
-  base_branches:
-    - "*"
